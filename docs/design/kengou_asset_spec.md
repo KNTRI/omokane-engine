@@ -39,6 +39,10 @@
 - 検証規則
 ```
 
+Asset体系全体の中では、権能Assetは「能力・効果の部品」に位置づけます。
+Entity生成の設計図は雛形Asset、既存Assetとの差分定義は派生Assetとして別に扱います。
+Asset体系全体については `docs/design/asset_model_spec.md` を参照します。
+
 ## 3. 通常Assetとの違い
 
 通常Asset:
