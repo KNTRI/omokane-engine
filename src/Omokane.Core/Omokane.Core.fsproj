@@ -12,6 +12,7 @@
     <Compile Include="Domain/Kotodama.fs" />
     <Compile Include="Domain/UpdateResult.fs" />
     <Compile Include="Validation/ValidationResult.fs" />
+    <Compile Include="Systems/Omokane.fs" />
   </ItemGroup>
 
 </Project>
