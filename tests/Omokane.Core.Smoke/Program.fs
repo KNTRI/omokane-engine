@@ -15,9 +15,9 @@ let 検証 = 正常
 [<EntryPoint>]
 let main _ =
     let 初期状態 = 思兼神.初期状態を作る ()
-    let 更新結果 = 思兼神.Tickだけ進める 初期状態
+    let 更新結果 = 思兼神.更新する [ 入力なし ] 初期状態
     let 終了済み状態 = { 初期状態 with 終了状態 = Some ゲームオーバー }
-    let 終了済み更新結果 = 思兼神.Tickだけ進める 終了済み状態
+    let 終了済み更新結果 = 思兼神.更新する [ 入力なし ] 終了済み状態
 
     let 成功 =
         初期状態.Tick = 0L
@@ -37,11 +37,11 @@ let main _ =
 
     match 検証 with
     | 正常 when 成功 ->
-        printfn "思兼神Core Tick Smoke OK"
+        printfn "思兼神Core Input Tick Smoke OK"
         printfn "Validation: 正常"
         0
     | 正常 ->
-        printfn "思兼神Core Tick Smoke FAILED"
+        printfn "思兼神Core Input Tick Smoke FAILED"
         printfn "Events: %A" 更新結果.イベント一覧
         printfn "Finished Events: %A" 終了済み更新結果.イベント一覧
         1
