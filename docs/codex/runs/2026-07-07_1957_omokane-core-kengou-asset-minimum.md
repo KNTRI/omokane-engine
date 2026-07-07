@@ -1,15 +1,16 @@
 # Codex Run Report
 
-title: 思兼神Core v0.1 権能Asset最小型コミット
+title: 思兼神Core v0.1 権能Asset最小型
 
-generated_at: 2026-07-07T20:04:31+09:00
+generated_at: 2026-07-07T19:59:28+09:00
 
 ## Summary
 
-- 権能Asset最小型の差分を確認した
-- Core buildとSmoke runが成功することを確認した
-- 文字化けがないことを確認した
-- 権能Asset最小型をコミットした
+- 権能Assetの最小型を追加した
+- 権能ID、権能タグ、権能Assetを追加した
+- タグ確認補助関数を追加した
+- 権能Assetの最小検証関数を追加した
+- Smokeでタグ確認と最小検証を確認した
 - 権能実行、条件判定、評価、結界Lock、天津裁定、因果Log、神託Debugは実装していない
 
 ## Changed Files
@@ -19,7 +20,6 @@ generated_at: 2026-07-07T20:04:31+09:00
 - tests/Omokane.Core.Smoke/Program.fs
 - docs/codex/runs/latest.md
 - docs/codex/runs/2026-07-07_1957_omokane-core-kengou-asset-minimum.md
-- docs/codex/runs/2026-07-07_2004_omokane-core-kengou-asset-minimum-commit.md
 
 ## Verification Commands
 
@@ -31,17 +31,10 @@ python -m py_compile tools/codex_ops/print_latest_report.py
 python -m py_compile tools/codex_ops/copy_latest_report.py
 python tools/codex_ops/print_latest_report.py --max-chars 4000
 python -c <mojibake marker check>
-git status --short --ignored
-git diff -- src tests docs/codex/runs
-git diff --cached --stat
-git diff --cached -- src tests docs/codex/runs
-git commit -m Add minimal Kengou asset model
-git log --oneline -1
-git status --short --ignored
 
 ## Verification Result
 
-Core build, Smoke build, Smoke run, Run Report helper compile, latest report print, staged diff review, commit, and mojibake marker check succeeded. Smoke output included Movement and KengouAsset OK messages.
+Core build, Smoke build, Smoke run, Run Report helper compile, latest report print, and mojibake marker check succeeded. Smoke output included Movement and KengouAsset OK messages.
 
 ## Errors
 
@@ -53,8 +46,8 @@ Core build, Smoke build, Smoke run, Run Report helper compile, latest report pri
 
 ## Next Candidates
 
-- 権能Assetの発行Event確認
-- 権能候補収集の最小設計
+- 権能Asset最小型のコミット
+- 権能Assetの発行Event確認または権能候補収集の最小設計
 
 ## Human Confirmation
 
