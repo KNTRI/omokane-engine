@@ -11,6 +11,10 @@
     <Compile Include="Domain/GameState.fs" />
     <Compile Include="Domain/Kotodama.fs" />
     <Compile Include="Domain/KengouAsset.fs" />
+    <Compile Include="Domain/Causality.fs" />
+    <Compile Include="Domain/Propagation.fs" />
+    <Compile Include="Domain/Observation.fs" />
+    <Compile Include="Domain/Entropy.fs" />
     <Compile Include="Domain/UpdateResult.fs" />
     <Compile Include="Validation/ValidationResult.fs" />
     <Compile Include="Systems/Omokane.fs" />

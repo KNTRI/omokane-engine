@@ -48,6 +48,21 @@ PowerShellでは `Get-Content -Raw -Encoding UTF8` を使う。
 外部依存パッケージを追加しない。
 依存追加、project file変更、lockfile変更、install系コマンド実行が必要になった場合は、事前に理由と差分を報告する。
 
+## 世界知能カーネル統合ルール
+
+新規機能は、`World Truth`、`Observation`、`Presentation` のどこに属するかを設計またはコードレビューで明記する。
+
+永続的な世界変更は、因果操作または同等のTransactionを通る経路を明記する。
+AIが参照する情報は、世界真実から物理情報伝播、感知値、観測、信念へ至る生成経路を明記し、世界真実の直接参照を標準経路にしない。
+
+高コスト機能は、LOD、性能予算、保存、再現、神託Debugによる確認方法を同時に設計する。
+LODでは細部を省略しても、主要因果、総量、方向、危険、秩序、観測不確実性、将来への影響を保持する。
+
+既存仕様との衝突は黙って上書きせず、`docs/adr/` の神議ADRへ記録する。
+既存の `Omokane.*` Namespace、project名、ファイル名は今回 `Omoikane.*` へ改名しない。
+
+上位アーキテクチャは `docs/architecture/index.md` を入口とし、アーキテクチャ不変条件は `docs/architecture/architecture_invariants.md` を正とする。
+
 今回のRun Report補助機構の追加では、ゲーム本体の仕様変更を行わない。
 
 ## 企画書・命名規則・運用ルール

@@ -47,6 +47,90 @@ let 権能AssetSmoke成功 () =
     && Result.isError (権能Asset.検証する 空名前権能)
     && Result.isError (権能Asset.検証する 空タグ権能)
 
+let 世界知能契約Smoke成功 () =
+    let プレイヤーID = エンティティID "player"
+
+    let 正常因果操作: 因果操作 =
+        {
+            ID = 因果操作ID "causal.move.player.1"
+            Tick = 1L
+            種別 = 状態変更
+            原因因果ID = None
+            実行者ID = Some プレイヤーID
+            対象EntityID = Some プレイヤーID
+            概要 = "プレイヤー移動要求"
+            発行Event一覧 = [ Tick進行 1L ]
+        }
+
+    let 空ID因果操作 =
+        { 正常因果操作 with ID = 因果操作ID "" }
+
+    let 正常伝播信号: 伝播信号 =
+        {
+            ID = 伝播信号ID "signal.smoke.1"
+            原因因果ID = Some 正常因果操作.ID
+            発生源EntityID = Some プレイヤーID
+            量種別 = 煙
+            媒体 = 大気
+            発生位置 = { X = 0.0; Y = 0.0 }
+            方向 = Some { X = 1.0; Y = 0.0 }
+            強度 = 0.5
+            方式 = 移流
+            寿命Tick = 10L
+        }
+
+    let 負強度伝播信号 =
+        { 正常伝播信号 with 強度 = -0.1 }
+
+    let 正常感知値: 感知値 =
+        {
+            観測者ID = プレイヤーID
+            信号ID = 正常伝播信号.ID
+            種別 = 視覚
+            測定値 = 0.5
+            確信度 = 0.8
+            Tick = 1L
+        }
+
+    let 正常観測: 観測 =
+        {
+            観測者ID = プレイヤーID
+            概要 = "煙が東へ流れている"
+            確信度 = 0.8
+            根拠一覧 = [ 正常感知値 ]
+        }
+
+    let 過信観測 =
+        { 正常観測 with 確信度 = 1.1 }
+
+    let 正常信念候補: 信念候補 =
+        {
+            仮説 = "東側に煙の発生源がある"
+            確率 = 0.7
+            根拠一覧 = [ 正常観測 ]
+            反証一覧 = []
+        }
+
+    let 正常散逸状態: 散逸状態 =
+        {
+            種別 = 痕跡風化
+            値 = 0.25
+        }
+
+    let 負値散逸状態 =
+        { 正常散逸状態 with 値 = -0.1 }
+
+    因果操作.検証する 正常因果操作 = Ok ()
+    && Result.isError (因果操作.検証する 空ID因果操作)
+    && 伝播信号.検証する 正常伝播信号 = Ok ()
+    && Result.isError (伝播信号.検証する 負強度伝播信号)
+    && 観測検証.感知値を検証する 正常感知値 = Ok ()
+    && 観測検証.観測を検証する 正常観測 = Ok ()
+    && 観測検証.信念候補を検証する 正常信念候補 = Ok ()
+    && Result.isError (観測検証.観測を検証する 過信観測)
+    && 散逸状態.検証する 正常散逸状態 = Ok ()
+    && Result.isError (散逸状態.検証する 負値散逸状態)
+
 [<EntryPoint>]
 let main _ =
     let 初期状態 = 思兼神.初期状態を作る ()
@@ -57,6 +141,7 @@ let main _ =
     let 終了済み状態 = { 初期状態 with 終了状態 = Some ゲームオーバー }
     let 終了済み更新結果 = 思兼神.更新する [ 右へ移動 ] 終了済み状態
     let 権能Asset成功 = 権能AssetSmoke成功 ()
+    let 世界知能契約成功 = 世界知能契約Smoke成功 ()
 
     let Movement成功 =
         初期状態.Tick = 0L
@@ -81,6 +166,7 @@ let main _ =
     let 成功 =
         Movement成功
         && 権能Asset成功
+        && 世界知能契約成功
 
     printfn "Inputs: %d" サンプル入力.Length
     printfn "Initial Tick: %d" 初期状態.Tick
@@ -101,12 +187,14 @@ let main _ =
     | 正常 when 成功 ->
         printfn "思兼神Core Movement Smoke OK"
         printfn "思兼神Core KengouAsset Smoke OK"
+        printfn "思兼神Core WorldIntelligence Contracts Smoke OK"
         printfn "Validation: 正常"
         0
     | 正常 ->
         printfn "思兼神Core Movement Smoke FAILED"
         printfn "Movement OK: %b" Movement成功
         printfn "KengouAsset OK: %b" 権能Asset成功
+        printfn "WorldIntelligence Contracts OK: %b" 世界知能契約成功
         printfn "Input None Events: %A" 入力なし結果.イベント一覧
         printfn "Right Events: %A" 右移動結果.イベント一覧
         printfn "Left Events: %A" 左移動結果.イベント一覧

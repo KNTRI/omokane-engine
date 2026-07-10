@@ -38,6 +38,12 @@ Coreは演出を直接実行せず、イベントとして返す。
 その中核概念として、常態核・偏差・復帰行動・常態収束機を扱う。
 詳細は `docs/design/jotai_convergence_machine_spec.md` を正とする。
 
+思兼神エンジンの上位構造は、世界真実、物理情報伝播、感知値、観測、信念、判断、因果操作を循環させる世界知能カーネルとして整理する。
+World Truth / Observation / Presentationを分離し、AIは観測経路だけから世界を知り、永続変更は因果操作を通す。
+詳細は `docs/architecture/index.md` と各神議ADRを正とする。
+
+現行v0.1の直接状態更新と `Omokane.*` Namespaceは互換のため維持し、今回一括改名やTransaction化を行わない。
+
 ## Japanese API Policy
 
 F#の型名、関数名、判別共用体、レコードフィールドには日本語を使ってよい。
