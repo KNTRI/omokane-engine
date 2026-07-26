@@ -131,6 +131,41 @@ let 世界知能契約Smoke成功 () =
     && 散逸状態.検証する 正常散逸状態 = Ok ()
     && Result.isError (散逸状態.検証する 負値散逸状態)
 
+let 観測生成Smoke成功 () =
+    let 観測者ID = エンティティID "player"
+
+    let 第一感知値: 感知値 =
+        {
+            観測者ID = 観測者ID
+            信号ID = 伝播信号ID "signal.observation.1"
+            種別 = 視覚
+            測定値 = 0.5
+            確信度 = 0.8
+            Tick = 1L
+        }
+
+    let 第二感知値: 感知値 =
+        {
+            第一感知値 with
+                信号ID = 伝播信号ID "signal.observation.2"
+                測定値 = 0.3
+                確信度 = 0.6
+        }
+
+    let 感知値一覧 = [ 第一感知値; 第二感知値 ]
+
+    let 正常変換成功 =
+        match 観測生成.感知値から観測を作る "2つの煙を観測した" 感知値一覧 with
+        | Ok 生成観測 ->
+            生成観測.観測者ID = 観測者ID
+            && 生成観測.確信度 = 0.6
+            && 生成観測.根拠一覧 = 感知値一覧
+        | Error _ ->
+            false
+
+    正常変換成功
+    && Result.isError (観測生成.感知値から観測を作る "空の観測" [])
+
 [<EntryPoint>]
 let main _ =
     let 初期状態 = 思兼神.初期状態を作る ()
@@ -142,6 +177,7 @@ let main _ =
     let 終了済み更新結果 = 思兼神.更新する [ 右へ移動 ] 終了済み状態
     let 権能Asset成功 = 権能AssetSmoke成功 ()
     let 世界知能契約成功 = 世界知能契約Smoke成功 ()
+    let 観測生成成功 = 観測生成Smoke成功 ()
 
     let Movement成功 =
         初期状態.Tick = 0L
@@ -167,6 +203,7 @@ let main _ =
         Movement成功
         && 権能Asset成功
         && 世界知能契約成功
+        && 観測生成成功
 
     printfn "Inputs: %d" サンプル入力.Length
     printfn "Initial Tick: %d" 初期状態.Tick
@@ -195,6 +232,7 @@ let main _ =
         printfn "Movement OK: %b" Movement成功
         printfn "KengouAsset OK: %b" 権能Asset成功
         printfn "WorldIntelligence Contracts OK: %b" 世界知能契約成功
+        printfn "Observation Generation OK: %b" 観測生成成功
         printfn "Input None Events: %A" 入力なし結果.イベント一覧
         printfn "Right Events: %A" 右移動結果.イベント一覧
         printfn "Left Events: %A" 左移動結果.イベント一覧
