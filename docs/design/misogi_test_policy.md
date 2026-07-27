@@ -237,30 +237,16 @@ Event発行後に因果Logが残る
 
 ## 10. テストフレームワーク導入方針
 
-現時点では、外部NuGet依存を増やさず、Smokeで最小確認を続ける。
-
-ただし、確認項目が増えてきた段階で、正式なテストフレームワーク導入を検討する。
-
-候補:
+初期の正式な禊TestフレームワークとしてExpectoを採用する。
+`tests/Omokane.Core.Misogi/` をCoreの正式な仕様検証に使用し、当面は以下のconsole runnerとして実行する。
 
 ```text
-Expecto
-xUnit
-FsUnit
+dotnet run --project .\tests\Omokane.Core.Misogi\Omokane.Core.Misogi.fsproj
 ```
 
-今回の作業では導入しない。
-どれを採用するかも確定しない。
-
-判断基準:
-
-```text
-F#との相性
-日本語テスト名の扱いやすさ
-CLI実行の簡単さ
-Codexでの保守しやすさ
-外部依存増加の許容度
-```
+Expecto.TestSdk、FsUnit、FsCheck、xUnitはまだ導入しない。
+将来 `dotnet test` やCIへ統合するときに、Expecto.TestSdkまたは別ランナーを再評価する。
+採用判断の詳細は [ADR-010](../adr/ADR-010-expecto-misogi-test-framework.md) を正とする。
 
 ## 11. Smoke肥大化を防ぐ方針
 
@@ -282,7 +268,7 @@ tests/Omokane.Core.Smoke/
   最小通電確認
 
 tests/Omokane.Core.Misogi/
-  Coreの正式な仕様検証
+  Coreの正式な仕様検証（Expecto）
 
 tests/Omokane.Asset.Misogi/
   権能Asset、雛形Asset、派生Assetの検証
@@ -291,19 +277,18 @@ tests/Omokane.WorldAI.Misogi/
   常態、偏差、権能選択、因果Log、神託Debug、世界AIの検証
 ```
 
-今回、これらのプロジェクトは作成しない。
-この構成は、テストフレームワーク導入時に検討する設計案である。
+`tests/Omokane.Core.Misogi/` は導入済みである。
+AssetとWorldAIの禊Testプロジェクトは、対象実装が増えた段階で検討する。
 
 ## 13. 今回まだ作らないもの
 
 以下は今回作らない。
 
 ```text
-F#実装
-tests/Omokane.Core.Misogi/
+ゲームエンジン本体のF#実装
 tests/Omokane.Asset.Misogi/
 tests/Omokane.WorldAI.Misogi/
-Expecto / xUnit / FsUnit 導入
+Expecto.TestSdk / xUnit / FsUnit / FsCheck 導入
 因果Log型
 神託Debug型
 権能ライフサイクル実装
@@ -323,5 +308,5 @@ Smoke = 通電確認
 Smokeは、プロジェクトが最低限ビルド・実行できるかを見る入口確認である。
 禊Testは、固定tick、決定論、状態遷移、言霊Event列、因果Log、神託Debug、権能ライフサイクル、Asset定義、不変条件を検証する正式な仕様検証である。
 
-v0.1では、まずCoreの最小挙動を検証対象候補として整理する。
-正式なテストフレームワーク導入は、検証項目が増えてから判断する。
+v0.1では、Coreの正式な仕様検証をExpectoによる禊Testへ段階的に移す。
+Smokeは通電確認として維持し、詳細な境界値と決定論は禊Testで固定する。

@@ -23,6 +23,7 @@
 - [ADR-007: 日本語API・日本神話モチーフ命名と既存Omokane互換](../adr/ADR-007-japanese-api-omokane-compatibility.md)
 - [ADR-008: 可観測性と再生を初期要件とする](../adr/ADR-008-observability-replay.md)
 - [ADR-009: 物理情報伝播層とエントロピー基盤を導入](../adr/ADR-009-propagation-entropy-foundations.md)
+- [ADR-010: 禊Testの初期フレームワークとしてExpectoを採用する](../adr/ADR-010-expecto-misogi-test-framework.md)
 
 ## 既存設計との接続
 
