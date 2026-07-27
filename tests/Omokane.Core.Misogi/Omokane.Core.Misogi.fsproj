@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="CausalOperationExecutionTests.fs" />
     <Compile Include="ObservationGenerationTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
