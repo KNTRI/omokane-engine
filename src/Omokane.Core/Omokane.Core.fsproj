@@ -14,6 +14,7 @@
     <Compile Include="Domain/Causality.fs" />
     <Compile Include="Domain/Propagation.fs" />
     <Compile Include="Domain/Observation.fs" />
+    <Compile Include="Domain/Sensing.fs" />
     <Compile Include="Domain/Entropy.fs" />
     <Compile Include="Domain/UpdateResult.fs" />
     <Compile Include="Domain/CausalExecution.fs" />
