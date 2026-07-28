@@ -9,6 +9,7 @@ let 全テスト =
         [
             ObservationGenerationTests.全テスト
             SensingTests.全テスト
+            BeliefCandidateTests.全テスト
             CausalOperationExecutionTests.全テスト
             CausalOperationBatchExecutionTests.全テスト
             CausalLedgerTests.全テスト
