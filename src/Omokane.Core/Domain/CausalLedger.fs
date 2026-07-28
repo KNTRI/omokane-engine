@@ -54,6 +54,7 @@ module 因果台帳 =
     let private エラーを集める
         (既存ID一覧: Set<因果操作ID>)
         (候補ID出現回数: Map<因果操作ID, int>)
+        (直前Tick: int64 option)
         (候補: 因果記録候補)
         =
         let (因果操作ID id) = 候補.因果操作ID
@@ -63,6 +64,10 @@ module 因果台帳 =
             not (List.isEmpty 候補.失敗理由一覧), "成功した因果記録候補に失敗理由があります。"
             System.String.IsNullOrWhiteSpace id, "因果操作IDが空です。"
             候補.Tick < 0L, "因果操作のTickが負です。"
+            (match 直前Tick with
+             | Some tick -> 候補.Tick < tick
+             | None -> false),
+            "因果台帳のTick順序が逆行しています。"
             System.String.IsNullOrWhiteSpace 候補.概要, "因果操作の概要が空です。"
             Option.isNone 候補.対象EntityID, "対象EntityIDが指定されていません。"
             Option.isNone 候補.変更前位置, "変更前位置が指定されていません。"
@@ -91,6 +96,26 @@ module 因果台帳 =
         |> List.choose (fun (不正, メッセージ) ->
             if 不正 then Some メッセージ else None)
 
+    let private 直前Tick一覧を作る
+        (既存記録一覧: 因果台帳記録 list)
+        (候補一覧: 因果記録候補 list)
+        =
+        let 既存末尾Tick =
+            既存記録一覧
+            |> List.tryLast
+            |> Option.map (fun 記録 -> 記録.Tick)
+
+        let rec 作る
+            (直前Tick: int64 option)
+            (未処理一覧: 因果記録候補 list)
+            : int64 option list =
+            match 未処理一覧 with
+            | [] -> []
+            | 候補 :: 残り ->
+                直前Tick :: 作る (Some 候補.Tick) 残り
+
+        作る 既存末尾Tick 候補一覧
+
     let private 正式記録へ変換する (候補: 因果記録候補) =
         {
             因果操作ID = 候補.因果操作ID
@@ -115,13 +140,14 @@ module 因果台帳 =
             |> Set.ofList
 
         let 候補ID出現回数 = 因果操作ID出現回数を作る 候補一覧
+        let 直前Tick一覧 = 直前Tick一覧を作る 既存記録一覧 候補一覧
 
         let 検証結果 =
-            候補一覧
-            |> List.mapi (fun index 候補 ->
+            List.zip 候補一覧 直前Tick一覧
+            |> List.mapi (fun index (候補, 直前Tick) ->
                 index,
                 候補,
-                エラーを集める 既存ID一覧 候補ID出現回数 候補)
+                エラーを集める 既存ID一覧 候補ID出現回数 直前Tick 候補)
 
         match 検証結果 |> List.tryFind (fun (_, _, 理由一覧) -> not (List.isEmpty 理由一覧)) with
         | Some(index, 候補, 理由一覧) ->

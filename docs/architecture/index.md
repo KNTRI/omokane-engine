@@ -24,6 +24,7 @@
 - [ADR-008: 可観測性と再生を初期要件とする](../adr/ADR-008-observability-replay.md)
 - [ADR-009: 物理情報伝播層とエントロピー基盤を導入](../adr/ADR-009-propagation-entropy-foundations.md)
 - [ADR-010: 禊Testの初期フレームワークとしてExpectoを採用する](../adr/ADR-010-expecto-misogi-test-framework.md)
+- [ADR-011: 因果台帳の最小再生は記録結果の検証付き再適用とする](../adr/ADR-011-causal-ledger-result-replay.md)
 
 ## 既存設計との接続
 
