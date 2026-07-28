@@ -12,6 +12,7 @@
     <Compile Include="CausalOperationExecutionTests.fs" />
     <Compile Include="CausalOperationBatchExecutionTests.fs" />
     <Compile Include="CausalLedgerTests.fs" />
+    <Compile Include="CausalReplayTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
