@@ -7,8 +7,9 @@ let 全テスト =
     testList
         "思兼神Core 禊Test"
         [
-            CausalOperationExecutionTests.全テスト
             ObservationGenerationTests.全テスト
+            CausalOperationExecutionTests.全テスト
+            CausalOperationBatchExecutionTests.全テスト
         ]
 
 [<EntryPoint>]
