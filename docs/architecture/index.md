@@ -25,6 +25,7 @@
 - [ADR-009: 物理情報伝播層とエントロピー基盤を導入](../adr/ADR-009-propagation-entropy-foundations.md)
 - [ADR-010: 禊Testの初期フレームワークとしてExpectoを採用する](../adr/ADR-010-expecto-misogi-test-framework.md)
 - [ADR-011: 因果台帳の最小再生は記録結果の検証付き再適用とする](../adr/ADR-011-causal-ledger-result-replay.md)
+- [ADR-012: 伝播信号の最小感知変換は明示設定と線形距離減衰を使う](../adr/ADR-012-minimal-signal-sensing.md)
 
 ## 既存設計との接続
 
