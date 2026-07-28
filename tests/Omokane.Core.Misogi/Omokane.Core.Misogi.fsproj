@@ -10,6 +10,7 @@
   <ItemGroup>
     <Compile Include="ObservationGenerationTests.fs" />
     <Compile Include="SensingTests.fs" />
+    <Compile Include="BeliefCandidateTests.fs" />
     <Compile Include="CausalOperationExecutionTests.fs" />
     <Compile Include="CausalOperationBatchExecutionTests.fs" />
     <Compile Include="CausalLedgerTests.fs" />
