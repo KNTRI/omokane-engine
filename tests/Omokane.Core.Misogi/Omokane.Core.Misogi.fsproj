@@ -12,6 +12,7 @@
     <Compile Include="SensingTests.fs" />
     <Compile Include="BeliefCandidateTests.fs" />
     <Compile Include="AlertIntentTests.fs" />
+    <Compile Include="GroundVibrationAlertSliceTests.fs" />
     <Compile Include="CausalOperationExecutionTests.fs" />
     <Compile Include="CausalOperationBatchExecutionTests.fs" />
     <Compile Include="CausalLedgerTests.fs" />
