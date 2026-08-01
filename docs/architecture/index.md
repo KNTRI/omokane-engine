@@ -27,6 +27,7 @@
 - [ADR-011: 因果台帳の最小再生は記録結果の検証付き再適用とする](../adr/ADR-011-causal-ledger-result-replay.md)
 - [ADR-012: 伝播信号の最小感知変換は明示設定と線形距離減衰を使う](../adr/ADR-012-minimal-signal-sensing.md)
 - [ADR-013: 観測からの最小信念候補生成は明示的な根拠・反証と軟証拠集約を使う](../adr/ADR-013-minimal-belief-candidate.md)
+- [ADR-014: 信念候補からの最小警戒意図生成は単一の明示閾値を使う](../adr/ADR-014-minimal-alert-intent.md)
 
 ## 既存設計との接続
 
