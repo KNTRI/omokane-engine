@@ -18,6 +18,7 @@
     <Compile Include="Domain/Belief.fs" />
     <Compile Include="Domain/AlertIntent.fs" />
     <Compile Include="Domain/GroundVibrationAlertSlice.fs" />
+    <Compile Include="Domain/ActionCandidate.fs" />
     <Compile Include="Domain/Entropy.fs" />
     <Compile Include="Domain/UpdateResult.fs" />
     <Compile Include="Domain/CausalExecution.fs" />
