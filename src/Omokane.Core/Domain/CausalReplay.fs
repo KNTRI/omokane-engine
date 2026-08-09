@@ -9,7 +9,7 @@ type 因果台帳再生結果 =
         失敗操作ID: 因果操作ID *
         理由一覧: string list
 
-module 因果台帳再生 =
+module internal Entity位置変更記録再生 =
 
     let private 対象一覧
         (対象ID: エンティティID)
@@ -41,6 +41,32 @@ module 因果台帳再生 =
         |> List.choose (fun (不正, メッセージ) ->
             if 不正 then Some メッセージ else None)
 
+    let 適用する
+        (現在状態: ゲーム状態)
+        (記録: 因果台帳記録)
+        : Result<ゲーム状態, string list> =
+        let 理由一覧 = エラーを集める 現在状態 記録
+
+        if not (List.isEmpty 理由一覧) then
+            Error 理由一覧
+        else
+            let 更新後Entity一覧 =
+                現在状態.エンティティ一覧
+                |> List.map (fun entity ->
+                    if entity.ID = 記録.対象EntityID then
+                        { entity with 位置 = 記録.変更後位置 }
+                    else
+                        entity)
+
+            Ok
+                {
+                    現在状態 with
+                        Tick = 記録.Tick
+                        エンティティ一覧 = 更新後Entity一覧
+                }
+
+module 因果台帳再生 =
+
     let 再生する
         (初期状態: ゲーム状態)
         (台帳: 因果台帳)
@@ -64,31 +90,15 @@ module 因果台帳再生 =
                         イベント一覧 = Event一覧
                     }
             | 記録 :: 残り ->
-                let 理由一覧 = エラーを集める 仮状態 記録
-
-                if not (List.isEmpty 理由一覧) then
+                match Entity位置変更記録再生.適用する 仮状態 記録 with
+                | Error 理由一覧 ->
                     再生失敗(
                         初期状態,
                         index,
                         記録.因果操作ID,
                         理由一覧
                     )
-                else
-                    let 更新後Entity一覧 =
-                        仮状態.エンティティ一覧
-                        |> List.map (fun entity ->
-                            if entity.ID = 記録.対象EntityID then
-                                { entity with 位置 = 記録.変更後位置 }
-                            else
-                                entity)
-
-                    let 更新後状態 =
-                        {
-                            仮状態 with
-                                Tick = 記録.Tick
-                                エンティティ一覧 = 更新後Entity一覧
-                        }
-
+                | Ok 更新後状態 ->
                     再生を進める
                         (index + 1)
                         更新後状態
