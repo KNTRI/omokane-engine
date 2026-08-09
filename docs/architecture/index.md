@@ -32,6 +32,8 @@
 - [ADR-016: 警戒意図からの最小行動候補生成はその場警戒だけを提示する](../adr/ADR-016-minimal-alert-action-candidate.md)
 - [ADR-017: 地盤振動発生因果操作はゲーム状態を直接変更せず権威伝播信号を生成する](../adr/ADR-017-causal-ground-vibration-emission.md)
 - [ADR-018: 因果起点から行動候補までの閉ループは既存の純粋境界を合成する](../adr/ADR-018-causal-cognitive-action-loop.md)
+- [ADR-019: 異種因果結果は統合因果台帳へ判別共用体として保存する](../adr/ADR-019-integrated-causal-ledger.md)
+- [ADR-020: 統合因果Replayは状態変更と伝播信号生成を同一因果順で検証付き再適用する](../adr/ADR-020-integrated-causal-replay.md)
 
 ## 既存設計との接続
 
@@ -43,6 +45,7 @@
 - [権能タグ設計](../design/kengou_tag_design.md)
 - [プロシージャル箱庭最小動作モデル](../design/procedural_sandbox_minimum_model.md)
 - [因果認識閉ループ v0.1](../design/causal_ground_vibration_cognitive_loop.md)
+- [統合因果台帳 v0.1と異種因果結果Replay](../design/integrated_causal_ledger_and_replay.md)
 - [常態収束機仕様書](../design/jotai_convergence_machine_spec.md)
 - [用語集](../design/glossary.md)
 

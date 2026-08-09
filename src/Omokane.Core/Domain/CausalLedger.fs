@@ -128,6 +128,17 @@ module 因果台帳 =
             発行Event一覧 = 候補.発行Event一覧
         }
 
+    let internal 単一候補を正式化する
+        (候補: 因果記録候補)
+        : Result<因果台帳記録, string list> =
+        let 候補ID出現回数 = 因果操作ID出現回数を作る [ 候補 ]
+        let 理由一覧 = エラーを集める Set.empty 候補ID出現回数 None 候補
+
+        if List.isEmpty 理由一覧 then
+            Ok(正式記録へ変換する 候補)
+        else
+            Error 理由一覧
+
     let 追記する
         (現在台帳: 因果台帳)
         (候補一覧: 因果記録候補 list)

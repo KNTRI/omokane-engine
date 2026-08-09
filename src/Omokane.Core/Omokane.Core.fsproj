@@ -25,7 +25,9 @@
     <Compile Include="Domain/GroundVibrationCausalEmission.fs" />
     <Compile Include="Domain/CausalGroundVibrationCognitiveLoop.fs" />
     <Compile Include="Domain/CausalLedger.fs" />
+    <Compile Include="Domain/IntegratedCausalLedger.fs" />
     <Compile Include="Domain/CausalReplay.fs" />
+    <Compile Include="Domain/IntegratedCausalReplay.fs" />
     <Compile Include="Validation/ValidationResult.fs" />
     <Compile Include="Systems/Omokane.fs" />
   </ItemGroup>

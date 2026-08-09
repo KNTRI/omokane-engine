@@ -19,6 +19,9 @@ let 全テスト =
             CausalOperationBatchExecutionTests.全テスト
             CausalLedgerTests.全テスト
             CausalReplayTests.全テスト
+            IntegratedCausalLedgerTests.全テスト
+            IntegratedCausalReplayTests.全テスト
+            IntegratedCausalHistoryCompatibilityTests.全テスト
         ]
 
 [<EntryPoint>]
