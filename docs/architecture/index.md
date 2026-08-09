@@ -29,6 +29,7 @@
 - [ADR-013: 観測からの最小信念候補生成は明示的な根拠・反証と軟証拠集約を使う](../adr/ADR-013-minimal-belief-candidate.md)
 - [ADR-014: 信念候補からの最小警戒意図生成は単一の明示閾値を使う](../adr/ADR-014-minimal-alert-intent.md)
 - [ADR-015: 地盤振動の技術垂直スライスは既存の純粋認識変換を順次合成する](../adr/ADR-015-ground-vibration-alert-vertical-slice.md)
+- [ADR-016: 警戒意図からの最小行動候補生成はその場警戒だけを提示する](../adr/ADR-016-minimal-alert-action-candidate.md)
 
 ## 既存設計との接続
 

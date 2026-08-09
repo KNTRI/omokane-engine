@@ -35,6 +35,89 @@ module 警戒意図設定 =
         else
             Error エラー一覧
 
+module 警戒意図 =
+
+    let private 有限である 値 =
+        not (System.Double.IsNaN 値 || System.Double.IsInfinity 値)
+
+    let private 結果エラーを得る = function
+        | Ok () -> []
+        | Error エラー一覧 -> エラー一覧
+
+    let private 観測エラーを収集する 接頭辞 (観測一覧: 観測 list) =
+        観測一覧
+        |> List.mapi (fun index 対象観測 ->
+            観測検証.観測を検証する 対象観測
+            |> 結果エラーを得る
+            |> List.map (fun エラー -> sprintf "%s[%d]: %s" 接頭辞 index エラー))
+        |> List.concat
+
+    let 検証する (意図: 警戒意図) : Result<unit, string list> =
+        let (エンティティID 観測者ID値) = 意図.観測者ID
+        let 全観測 = 意図.由来信念候補.根拠一覧 @ 意図.由来信念候補.反証一覧
+
+        let 由来候補エラー =
+            観測検証.信念候補を検証する 意図.由来信念候補
+            |> 結果エラーを得る
+            |> List.map (fun エラー -> "由来信念候補: " + エラー)
+
+        let 由来観測者IDが空 =
+            全観測
+            |> List.exists (fun 対象観測 ->
+                let (エンティティID ID) = 対象観測.観測者ID
+                System.String.IsNullOrWhiteSpace ID)
+
+        let 由来観測者ID不一致 =
+            match 全観測 with
+            | [] -> false
+            | 基準 :: 残り ->
+                残り |> List.exists (fun 対象観測 -> 対象観測.観測者ID <> 基準.観測者ID)
+
+        let エラー一覧 =
+            [
+                if System.String.IsNullOrWhiteSpace 観測者ID値 then
+                    "警戒意図の観測者IDが空です。"
+
+                if System.String.IsNullOrWhiteSpace 意図.対象仮説 then
+                    "警戒意図の対象仮説が空です。"
+
+                if not (有限である 意図.警戒度) then
+                    "警戒意図の警戒度が有限値ではありません。"
+
+                if 意図.警戒度 < 0.0 || 意図.警戒度 > 1.0 then
+                    "警戒意図の警戒度は0.0以上1.0以下である必要があります。"
+
+                yield! 由来候補エラー
+
+                if List.isEmpty 全観測 then
+                    "警戒意図の由来信念候補に使用する観測一覧が空です。"
+
+                yield! 観測エラーを収集する "根拠観測" 意図.由来信念候補.根拠一覧
+                yield! 観測エラーを収集する "反証観測" 意図.由来信念候補.反証一覧
+
+                if 由来観測者IDが空 then
+                    "警戒意図の由来信念候補に使用する観測者IDが空です。"
+
+                if 由来観測者ID不一致 then
+                    "警戒意図の由来信念候補に使用する観測の観測者IDが一致しません。"
+
+                match 全観測 with
+                | 基準 :: _ when 基準.観測者ID <> 意図.観測者ID ->
+                    "警戒意図の観測者IDが由来信念候補の観測者IDと一致しません。"
+                | _ -> ()
+
+                if 意図.由来信念候補.仮説 <> 意図.対象仮説 then
+                    "警戒意図の対象仮説が由来信念候補の仮説と一致しません。"
+
+                if 意図.由来信念候補.確率 <> 意図.警戒度 then
+                    "警戒意図の警戒度が由来信念候補の確率と一致しません。"
+            ]
+
+        if List.isEmpty エラー一覧 then
+            Ok ()
+        else
+            Error エラー一覧
+
 module 警戒意図生成 =
 
     let private 結果エラーを得る = function
@@ -111,6 +194,8 @@ module 警戒意図生成 =
                         由来信念候補 = 候補
                     }
 
-                Ok(Some 意図)
+                match 警戒意図.検証する 意図 with
+                | Ok () -> Ok(Some 意図)
+                | Error エラー一覧 -> Error エラー一覧
             | [] ->
                 Error [ "警戒意図生成に使用する観測一覧が空です。" ]
