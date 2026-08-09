@@ -13,6 +13,8 @@ let 全テスト =
             AlertIntentTests.全テスト
             GroundVibrationAlertSliceTests.全テスト
             AlertActionCandidateTests.全テスト
+            GroundVibrationCausalEmissionTests.全テスト
+            CausalGroundVibrationCognitiveLoopTests.全テスト
             CausalOperationExecutionTests.全テスト
             CausalOperationBatchExecutionTests.全テスト
             CausalLedgerTests.全テスト
