@@ -14,6 +14,8 @@
     <Compile Include="AlertIntentTests.fs" />
     <Compile Include="GroundVibrationAlertSliceTests.fs" />
     <Compile Include="AlertActionCandidateTests.fs" />
+    <Compile Include="GroundVibrationCausalEmissionTests.fs" />
+    <Compile Include="CausalGroundVibrationCognitiveLoopTests.fs" />
     <Compile Include="CausalOperationExecutionTests.fs" />
     <Compile Include="CausalOperationBatchExecutionTests.fs" />
     <Compile Include="CausalLedgerTests.fs" />

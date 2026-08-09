@@ -22,6 +22,8 @@
     <Compile Include="Domain/Entropy.fs" />
     <Compile Include="Domain/UpdateResult.fs" />
     <Compile Include="Domain/CausalExecution.fs" />
+    <Compile Include="Domain/GroundVibrationCausalEmission.fs" />
+    <Compile Include="Domain/CausalGroundVibrationCognitiveLoop.fs" />
     <Compile Include="Domain/CausalLedger.fs" />
     <Compile Include="Domain/CausalReplay.fs" />
     <Compile Include="Validation/ValidationResult.fs" />
