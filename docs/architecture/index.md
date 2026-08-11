@@ -34,6 +34,7 @@
 - [ADR-018: 因果起点から行動候補までの閉ループは既存の純粋境界を合成する](../adr/ADR-018-causal-cognitive-action-loop.md)
 - [ADR-019: 異種因果結果は統合因果台帳へ判別共用体として保存する](../adr/ADR-019-integrated-causal-ledger.md)
 - [ADR-020: 統合因果Replayは状態変更と伝播信号生成を同一因果順で検証付き再適用する](../adr/ADR-020-integrated-causal-replay.md)
+- [ADR-021: 行動候補の最小選択は最高優先度と入力順タイブレークを使う](../adr/ADR-021-deterministic-action-candidate-selection.md)
 
 ## 既存設計との接続
 
@@ -46,6 +47,7 @@
 - [プロシージャル箱庭最小動作モデル](../design/procedural_sandbox_minimum_model.md)
 - [因果認識閉ループ v0.1](../design/causal_ground_vibration_cognitive_loop.md)
 - [統合因果台帳 v0.1と異種因果結果Replay](../design/integrated_causal_ledger_and_replay.md)
+- [行動候補の決定論的な最小選択](../design/action_candidate_selection.md)
 - [常態収束機仕様書](../design/jotai_convergence_machine_spec.md)
 - [用語集](../design/glossary.md)
 

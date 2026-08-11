@@ -22,6 +22,7 @@ let 全テスト =
             IntegratedCausalLedgerTests.全テスト
             IntegratedCausalReplayTests.全テスト
             IntegratedCausalHistoryCompatibilityTests.全テスト
+            ActionCandidateSelectionTests.全テスト
         ]
 
 [<EntryPoint>]

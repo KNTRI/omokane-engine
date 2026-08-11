@@ -23,6 +23,7 @@
     <Compile Include="IntegratedCausalLedgerTests.fs" />
     <Compile Include="IntegratedCausalReplayTests.fs" />
     <Compile Include="IntegratedCausalHistoryCompatibilityTests.fs" />
+    <Compile Include="ActionCandidateSelectionTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
