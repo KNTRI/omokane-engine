@@ -24,6 +24,7 @@
     <Compile Include="IntegratedCausalReplayTests.fs" />
     <Compile Include="IntegratedCausalHistoryCompatibilityTests.fs" />
     <Compile Include="ActionCandidateSelectionTests.fs" />
+    <Compile Include="EntityReactionRequestTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

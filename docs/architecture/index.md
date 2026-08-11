@@ -35,6 +35,7 @@
 - [ADR-019: 異種因果結果は統合因果台帳へ判別共用体として保存する](../adr/ADR-019-integrated-causal-ledger.md)
 - [ADR-020: 統合因果Replayは状態変更と伝播信号生成を同一因果順で検証付き再適用する](../adr/ADR-020-integrated-causal-replay.md)
 - [ADR-021: 行動候補の最小選択は最高優先度と入力順タイブレークを使う](../adr/ADR-021-deterministic-action-candidate-selection.md)
+- [ADR-022: 選択済み行動候補は意味を保ったエンティティ反応要求へ変換する](../adr/ADR-022-entity-reaction-request.md)
 
 ## 既存設計との接続
 
@@ -48,6 +49,7 @@
 - [因果認識閉ループ v0.1](../design/causal_ground_vibration_cognitive_loop.md)
 - [統合因果台帳 v0.1と異種因果結果Replay](../design/integrated_causal_ledger_and_replay.md)
 - [行動候補の決定論的な最小選択](../design/action_candidate_selection.md)
+- [エンティティ反応要求](../design/entity_reaction_request.md)
 - [常態収束機仕様書](../design/jotai_convergence_machine_spec.md)
 - [用語集](../design/glossary.md)
 
