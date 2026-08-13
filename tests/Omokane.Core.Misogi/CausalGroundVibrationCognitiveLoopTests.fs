@@ -25,6 +25,7 @@ let private 基本状態 () =
         Tick = 20L
         プレイヤーID = 発生者ID
         エンティティ一覧 = [ entityを作る 発生者ID 0.0 0.0; entityを作る 観測者ID 0.0 0.0 ]
+        エンティティ反応状態一覧 = []
         乱数Seed = 97531
         終了状態 = None
     }

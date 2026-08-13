@@ -38,6 +38,7 @@ module TestData =
                     entity 対象A 1.0 2.0
                     entity 対象B 10.0 20.0
                 ]
+            エンティティ反応状態一覧 = []
             乱数Seed = 9876
             終了状態 = None
         }

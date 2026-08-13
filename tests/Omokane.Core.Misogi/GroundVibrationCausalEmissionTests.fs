@@ -24,6 +24,7 @@ let private 状態を作る Entity一覧 =
         Tick = 10L
         プレイヤーID = 実行者ID
         エンティティ一覧 = Entity一覧
+        エンティティ反応状態一覧 = []
         乱数Seed = 2468
         終了状態 = None
     }
