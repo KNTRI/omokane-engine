@@ -61,6 +61,7 @@ let private 状態を作る () =
                 entityを作る 対象A 1.0 2.0
                 entityを作る 対象B 5.0 6.0
             ]
+        エンティティ反応状態一覧 = []
         乱数Seed = 789
         終了状態 = None
     }

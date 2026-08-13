@@ -24,6 +24,8 @@ let 全テスト =
             IntegratedCausalHistoryCompatibilityTests.全テスト
             ActionCandidateSelectionTests.全テスト
             EntityReactionRequestTests.全テスト
+            EntityReactionStateCausalTests.全テスト
+            IntegratedEntityReactionHistoryTests.全テスト
         ]
 
 [<EntryPoint>]
