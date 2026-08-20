@@ -8,6 +8,7 @@
     <Compile Include="Domain/Input.fs" />
     <Compile Include="Domain/Space.fs" />
     <Compile Include="Domain/Entity.fs" />
+    <Compile Include="Domain/VoluntaryLocomotionIntent.fs" />
     <Compile Include="Domain/GameOutcome.fs" />
     <Compile Include="Domain/Kotodama.fs" />
     <Compile Include="Domain/KengouAsset.fs" />
@@ -25,6 +26,7 @@
     <Compile Include="Domain/Entropy.fs" />
     <Compile Include="Domain/GameState.fs" />
     <Compile Include="Domain/VoluntaryLocomotionControl.fs" />
+    <Compile Include="Domain/VoluntaryLocomotionGate.fs" />
     <Compile Include="Domain/UpdateResult.fs" />
     <Compile Include="Domain/CausalExecution.fs" />
     <Compile Include="Domain/EntityReactionCausalExecution.fs" />
