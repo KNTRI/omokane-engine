@@ -38,6 +38,7 @@
 - [ADR-022: 選択済み行動候補は意味を保ったエンティティ反応要求へ変換する](../adr/ADR-022-entity-reaction-request.md)
 - [ADR-023: その場警戒は物理速度ではなく独立したエンティティ反応状態として保持する](../adr/ADR-023-entity-reaction-state.md)
 - [ADR-024: エンティティ反応要求は状態変更因果操作を経由して適用・記録・再生する](../adr/ADR-024-entity-reaction-causal-application.md)
+- [ADR-025: その場警戒状態は物理速度ではなく自発移動制御判断へ投影する](../adr/ADR-025-reaction-aware-voluntary-locomotion-control.md)
 
 ## 既存設計との接続
 
@@ -53,6 +54,7 @@
 - [行動候補の決定論的な最小選択](../design/action_candidate_selection.md)
 - [エンティティ反応要求](../design/entity_reaction_request.md)
 - [エンティティ反応状態と因果適用](../design/entity_reaction_state_and_causal_application.md)
+- [反応状態から自発移動制御判断を導出する読み取り境界](../design/reaction_state_locomotion_read_boundary.md)
 - [常態収束機仕様書](../design/jotai_convergence_machine_spec.md)
 - [用語集](../design/glossary.md)
 

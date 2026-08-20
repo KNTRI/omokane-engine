@@ -26,6 +26,7 @@ let 全テスト =
             EntityReactionRequestTests.全テスト
             EntityReactionStateCausalTests.全テスト
             IntegratedEntityReactionHistoryTests.全テスト
+            VoluntaryLocomotionControlTests.全テスト
         ]
 
 [<EntryPoint>]

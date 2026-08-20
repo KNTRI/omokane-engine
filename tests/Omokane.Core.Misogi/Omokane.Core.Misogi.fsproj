@@ -27,6 +27,7 @@
     <Compile Include="EntityReactionRequestTests.fs" />
     <Compile Include="EntityReactionStateCausalTests.fs" />
     <Compile Include="IntegratedEntityReactionHistoryTests.fs" />
+    <Compile Include="VoluntaryLocomotionControlTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
