@@ -39,6 +39,8 @@
 - [ADR-023: その場警戒は物理速度ではなく独立したエンティティ反応状態として保持する](../adr/ADR-023-entity-reaction-state.md)
 - [ADR-024: エンティティ反応要求は状態変更因果操作を経由して適用・記録・再生する](../adr/ADR-024-entity-reaction-causal-application.md)
 - [ADR-025: その場警戒状態は物理速度ではなく自発移動制御判断へ投影する](../adr/ADR-025-reaction-aware-voluntary-locomotion-control.md)
+- [ADR-026: 自発移動意図は物理速度ではなく主体が開始しようとする方向を表す](../adr/ADR-026-voluntary-locomotion-intent.md)
+- [ADR-027: 自発移動制御判断は同一主体・同一Tickの自発移動意図を通過または抑制する](../adr/ADR-027-voluntary-locomotion-intent-gate.md)
 
 ## 既存設計との接続
 
@@ -55,6 +57,7 @@
 - [エンティティ反応要求](../design/entity_reaction_request.md)
 - [エンティティ反応状態と因果適用](../design/entity_reaction_state_and_causal_application.md)
 - [反応状態から自発移動制御判断を導出する読み取り境界](../design/reaction_state_locomotion_read_boundary.md)
+- [自発移動意図 v0.1と自発移動制御Gate](../design/voluntary_locomotion_intent_and_gate.md)
 - [常態収束機仕様書](../design/jotai_convergence_machine_spec.md)
 - [用語集](../design/glossary.md)
 

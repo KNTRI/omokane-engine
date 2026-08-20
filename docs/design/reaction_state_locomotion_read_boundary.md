@@ -138,15 +138,15 @@ GameState、Entity一覧、反応状態一覧、Tick、Seed、終了状態を変
 現在時刻、GUID、乱数、外部環境、並列完了順、DictionaryやHashSetの列挙順に依存しない。
 対象IDと構造的に同一のGameStateから、構造的に同一の判断または固定順Errorを返す。
 
-## 20. 今後の自発移動意図gate
+## 20. 自発移動意図gateへの接続
 
-次段階では、自発移動意図を明示型として定義し、許可判断だけが意図をMovement Adapterへ通す境界を設計する。
-その際も外力・落下・押し出しを停止対象へ含めない。
+privateな自発移動意図と制御結果を追加し、同一主体・同一Tickの判断で意図を通過または抑制する境界を実装した。
+抑制結果は意図を破棄せず、外力、落下、押し出しを停止対象へ含めない。
 
 ## 21. 未実装事項
 
-- 自発移動意図型とlocomotion command
-- 意図gateとMovement Adapter
+- locomotion commandとMovement Adapter
+- 意図の競合解決、方向合成、予約、期限
 - 入力filter、プレイヤー移動抑制、NPC巡路停止
 - 速度ゼロ、位置固定、重力・外力停止
 - 反応状態解除、期限、ヒステリシス、cooldown
