@@ -27,6 +27,7 @@
     <Compile Include="Domain/GameState.fs" />
     <Compile Include="Domain/VoluntaryLocomotionControl.fs" />
     <Compile Include="Domain/VoluntaryLocomotionGate.fs" />
+    <Compile Include="Domain/VoluntaryLocomotionCompatibilityAdapter.fs" />
     <Compile Include="Domain/UpdateResult.fs" />
     <Compile Include="Domain/CausalExecution.fs" />
     <Compile Include="Domain/EntityReactionCausalExecution.fs" />

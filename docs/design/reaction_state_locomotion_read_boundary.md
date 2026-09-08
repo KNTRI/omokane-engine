@@ -142,10 +142,11 @@ GameState、Entity一覧、反応状態一覧、Tick、Seed、終了状態を変
 
 privateな自発移動意図と制御結果を追加し、同一主体・同一Tickの判断で意図を通過または抑制する境界を実装した。
 抑制結果は意図を破棄せず、外力、落下、押し出しを停止対象へ含めない。
+さらに [互換移動Adapter](voluntary_locomotion_compatibility_adapter.md) は保存Gate結果を受け取り、通過左右の主体付き命令生成、通過上下の未対応、制御抑制を区別する。命令と未生成結果から反応状態・要求・成立因果IDへ戻れる。
 
 ## 21. 未実装事項
 
-- locomotion commandとMovement Adapter
+- 互換命令の適用前主体検証とMovement適用Adapter
 - 意図の競合解決、方向合成、予約、期限
 - 入力filter、プレイヤー移動抑制、NPC巡路停止
 - 速度ゼロ、位置固定、重力・外力停止
