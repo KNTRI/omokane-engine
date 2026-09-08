@@ -44,8 +44,11 @@
 
 - [ADR-028: 通過済み自発移動意図は主体情報を保った互換移動命令へ変換する](../adr/ADR-028-voluntary-locomotion-compatibility-adapter.md)
 
+- [ADR-029: 互換移動命令は検証済みGameStateと一体の適用準備を経て旧Movementへ渡す](../adr/ADR-029-voluntary-locomotion-application-preflight.md)
+
 ## 既存設計との接続
 
+- [互換移動命令のGameState適用前検証](../design/voluntary_locomotion_application_preflight.md)
 - [自発移動の互換移動命令Adapter v0.1](../design/voluntary_locomotion_compatibility_adapter.md)
 - [Tick実行順序](../design/tick_execution_order.md)
 - [権能ライフサイクル仕様](../design/kengou_lifecycle_spec.md)

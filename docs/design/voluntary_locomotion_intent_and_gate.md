@@ -176,7 +176,7 @@ World Truthと派生判断・実行計画を分離する。
 ## 31. 将来のMovement Adapter
 
 Gate結果を主体付き互換Movement命令または未生成理由へ変換する [pure Adapter](voluntary_locomotion_compatibility_adapter.md) は実装済みである。
-通過左右だけを命令生成、通過上下を方向未対応、抑制を方向にかかわらず制御抑制とする。次段階では命令主体とGameStateを照合してから既存Movementへ適用する境界を設計する。
+通過左右だけを命令生成、通過上下を方向未対応、抑制を方向にかかわらず制御抑制とする。[適用前検証](voluntary_locomotion_application_preflight.md) は現在判断を再導出し、命令主体・Tick・プレイヤーEntity・終了状態を照合して検証状態と一体の準備を返す。Gate自体の責務は変えず、実際のMovement適用は後続である。
 物理外力と自発移動を合成する責務はAdapterより下流に残す。
 
 ## 32. 未実装事項
