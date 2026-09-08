@@ -29,6 +29,7 @@ let 全テスト =
             VoluntaryLocomotionControlTests.全テスト
             VoluntaryLocomotionIntentGateTests.全テスト
             VoluntaryLocomotionCompatibilityAdapterTests.全テスト
+            VoluntaryLocomotionApplicationPreflightTests.全テスト
         ]
 
 [<EntryPoint>]

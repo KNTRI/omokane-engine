@@ -49,3 +49,5 @@ AI、物理、権能、環境、個別スクリプトが権威状態を直接変
 - 統合因果台帳の永続化と完全な記紀Replay
 
 このためStatusは `Proposed` のまま維持する。
+
+ADR-029で、互換命令を現在GameStateと照合し検証snapshotへ結び付ける適用前境界を追加した。Movementの実行・因果化ではなく、全面Transaction化完了を意味しない。

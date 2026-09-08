@@ -32,6 +32,8 @@
 
 ## Implementation Status
 
+ADR-029の適用前検証は、Gate後の命令を現在GameStateと再照合する。Gate自体は保存判断との整合性だけを扱い続ける。同Tickで反応状態が変化した場合も、古い許可命令はpreflightで拒否される。
+
 実装済み:
 
 - privateな `自発移動意図制御結果`

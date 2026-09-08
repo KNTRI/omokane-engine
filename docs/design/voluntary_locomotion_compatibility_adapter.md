@@ -74,7 +74,7 @@ GameStateを受け取らずEntity存在・種別・所有者・locomotion能力�
 
 ## 19. プレイヤーID検証の後送り
 
-将来の適用Adapterは命令.実行者ID = ゲーム状態.プレイヤーIDを検証してから既存Inputを取り出す。現行実装が種別も要求する点と、Tick・終了状態・存在・一意性の扱いも次段で定義する。今回は採用・実装しない。
+独立した [適用前検証](voluntary_locomotion_application_preflight.md) を追加した。命令主体とプレイヤーID、Tick、終了状態、Entity存在・一意性・プレイヤー種別、現在判断の許可と由来判断一致を確認する。互換変換自体はGameStateを受け取らず、契約を変更しない。
 
 ## 20. World Truth境界
 
@@ -114,8 +114,8 @@ World Truth -> Derived Decision -> Execution Planning -> Compatibility Adapter -
 
 ## 29. 将来のMovement適用Adapter
 
-主体とGameStateの適用前照合を最優先とし、その後にプレイヤー左右命令の並行接続と旧経路等価性検証を行う。Inputだけの無条件実行は採用しない。
+主体とGameStateの適用前照合はADR-029で実装済み。次は検証済みGameStateを保持する非空の適用準備だけを受け取り、別状態を渡せない適用Adapterへ進む。Inputだけの無条件実行は採用しない。
 
 ## 30. 未実装事項
 
-GameState適用、主体適格性検証、上下・斜めMovement、速度・位置変更、入力filter、NPC巡路、意図競合解決、反応解除、期限、ヒステリシス、Event・因果・台帳保存、Field・SDF・Navigation・Rendererは後続である。
+GameState適用、上下・斜めMovement、速度・位置変更、入力filter、NPC巡路、意図競合解決、反応解除、期限、ヒステリシス、Event・因果・台帳保存、Field・SDF・Navigation・Rendererは後続である。プレイヤー主体の適用前適格性検証だけは独立境界で実装済み。

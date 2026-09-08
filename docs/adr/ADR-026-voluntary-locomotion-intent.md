@@ -31,6 +31,8 @@
 
 ## Implementation Status
 
+意図の主体・Tickを保持する互換命令の適用前検証をADR-029で追加した。意図を再発行・補正せず、現在GameStateへ照合する独立境界である。意図や旧Movementの契約は変更しない。
+
 実装済み:
 
 - privateな `自発移動意図`
