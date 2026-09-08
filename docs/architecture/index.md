@@ -42,8 +42,11 @@
 - [ADR-026: 自発移動意図は物理速度ではなく主体が開始しようとする方向を表す](../adr/ADR-026-voluntary-locomotion-intent.md)
 - [ADR-027: 自発移動制御判断は同一主体・同一Tickの自発移動意図を通過または抑制する](../adr/ADR-027-voluntary-locomotion-intent-gate.md)
 
+- [ADR-028: 通過済み自発移動意図は主体情報を保った互換移動命令へ変換する](../adr/ADR-028-voluntary-locomotion-compatibility-adapter.md)
+
 ## 既存設計との接続
 
+- [自発移動の互換移動命令Adapter v0.1](../design/voluntary_locomotion_compatibility_adapter.md)
 - [Tick実行順序](../design/tick_execution_order.md)
 - [権能ライフサイクル仕様](../design/kengou_lifecycle_spec.md)
 - [因果Log / 神託Debug最小型設計](../design/inga_log_shintaku_debug_minimum_spec.md)

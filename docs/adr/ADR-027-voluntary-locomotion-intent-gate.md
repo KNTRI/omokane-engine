@@ -40,10 +40,11 @@
 - 意図ID一意性
 - 制御判断由来の反応状態、要求ID、成立因果操作IDアクセサ
 - 完全因果経路と統合Replay後判断のGate一致
+- Gate結果を主体付き左右命令または抑制・上下未対応へ投影する独立した互換Adapter（ADR-028）
 
 未実装:
 
-- Movement Adapter
+- 主体とGameStateを照合して既存Movementを呼ぶ適用Adapter
 - 複数意図の競合裁定、方向合成、優先順位
 - 意図予約、期限、持越し、再評価
 - Gate結果のEvent化、因果操作化、履歴保存

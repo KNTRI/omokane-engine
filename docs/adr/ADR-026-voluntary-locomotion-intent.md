@@ -43,4 +43,4 @@
 
 - 斜め、任意ベクトル、意図強度、目的位置、経路
 - AI専用由来、意図予約、期限、持越し
-- Movement AdapterとWorld Truthへの適用
+- 互換命令のMovement適用AdapterとWorld Truthへの適用（Gate後の純粋な互換変換はADR-028で実装済み）

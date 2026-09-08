@@ -28,6 +28,7 @@ let 全テスト =
             IntegratedEntityReactionHistoryTests.全テスト
             VoluntaryLocomotionControlTests.全テスト
             VoluntaryLocomotionIntentGateTests.全テスト
+            VoluntaryLocomotionCompatibilityAdapterTests.全テスト
         ]
 
 [<EntryPoint>]

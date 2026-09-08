@@ -29,6 +29,7 @@
     <Compile Include="IntegratedEntityReactionHistoryTests.fs" />
     <Compile Include="VoluntaryLocomotionControlTests.fs" />
     <Compile Include="VoluntaryLocomotionIntentGateTests.fs" />
+    <Compile Include="VoluntaryLocomotionCompatibilityAdapterTests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

@@ -175,12 +175,13 @@ World Truthと派生判断・実行計画を分離する。
 
 ## 31. 将来のMovement Adapter
 
-次段階では通過意図だけを互換Movement命令へ変換するpure Adapterを設計する。
+Gate結果を主体付き互換Movement命令または未生成理由へ変換する [pure Adapter](voluntary_locomotion_compatibility_adapter.md) は実装済みである。
+通過左右だけを命令生成、通過上下を方向未対応、抑制を方向にかかわらず制御抑制とする。次段階では命令主体とGameStateを照合してから既存Movementへ適用する境界を設計する。
 物理外力と自発移動を合成する責務はAdapterより下流に残す。
 
 ## 32. 未実装事項
 
-- Movement Adapter、位置・速度変更、上下Movement
+- Movement適用Adapter、位置・速度変更、上下Movement
 - 意図競合解決、相殺、斜め合成、優先順位
 - 意図予約、期限、持越し、再評価
 - 反応状態解除、巡路停止・復帰
